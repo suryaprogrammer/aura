@@ -21,9 +21,15 @@ services:
     healthCheckPath: /api/health
 
     envVars:
+      # ── Python runtime version ─────────────────────────────────
+      # runtime.txt is a Heroku convention; Render requires PYTHON_VERSION.
+      - key: PYTHON_VERSION
+        value: 3.11.11
+
       # ── Required secrets — set these in the Render dashboard ──
       - key: JWT_SECRET
         generateValue: true          # Render auto-generates a secure value
+
 
       - key: GEMINI_API_KEY
         sync: false                  # Must be set manually in Render dashboard
