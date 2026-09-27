@@ -1,0 +1,6 @@
+{
+  "name": "AURA — Personal Operating System",
+  "description": "A personal operating system mobile application combining tasks, fitness, AI roadmap, hackathons, finance, savings, wardrobe, notes, and an AI personal coach.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

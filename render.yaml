@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: aura-backend
+    runtime: python
+    region: oregon
+    plan: free
+
+    # Build command — install dependencies from requirements.txt
+    buildCommand: pip install -r backend/requirements.txt
+
+    # Start command — run Uvicorn bound to Render's dynamic PORT
+    startCommand: >-
+      uvicorn backend.main:app
+      --host 0.0.0.0
+      --port $PORT
+
+    # Root of the repository is the working directory
+    rootDir: .
+
+    # Health check so Render knows the service is up
+    healthCheckPath: /api/health
+
+    envVars:
+      # ── Required secrets — set these in the Render dashboard ──
+      - key: JWT_SECRET
+        generateValue: true          # Render auto-generates a secure value
+
+      - key: GEMINI_API_KEY
+        sync: false                  # Must be set manually in Render dashboard
+
+      # ── CORS — update after Vercel deployment ─────────────────
+      # Replace with your actual Vercel URL once known
+      - key: CORS_ORIGINS
+        value: https://aura-web.vercel.app
+
+      # ── Database ───────────────────────────────────────────────
+      # SQLite is fine for Render's ephemeral disk (dev/demo).
+      # For persistence, attach a Render PostgreSQL database and
+      # replace the value below with the Internal Database URL.
+      - key: DATABASE_URL
+        value: sqlite:///./aura.db

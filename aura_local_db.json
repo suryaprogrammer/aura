@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "username": "surya",
+    "passwordHash": "$2b$10$l5hJQWGnIZQaLd6mneRnQ.J.J713ftwA0MFoYZaFEFQ.Uuf/1iMgy",
+    "is_active": true,
+    "created_at": "2026-09-12T06:18:24.927Z"
+  }
+]
